@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"piscine"
+	"piscine/piscine"
 )
 
 func main() {
@@ -14,4 +14,7 @@ func main() {
 
 	input3 := []uint{0}
 	fmt.Println(piscine.CanJump(input3))
+
+	input4 := []uint{1,1,1,1,0}
+	fmt.Println(piscine.CanJump(input4))
 }
