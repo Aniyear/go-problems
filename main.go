@@ -6,15 +6,14 @@ import (
 )
 
 func main() {
-	input1 := []uint{2, 3, 1, 1, 4}
-	fmt.Println(piscine.CanJump(input1))
-
-	input2 := []uint{3, 2, 1, 0, 4}
-	fmt.Println(piscine.CanJump(input2))
-
-	input3 := []uint{0}
-	fmt.Println(piscine.CanJump(input3))
-
-	input4 := []uint{1,1,1,1,0}
-	fmt.Println(piscine.CanJump(input4))
+	fmt.Println(piscine.ItoaBase(10, 2))
+	fmt.Println(piscine.ItoaBase(255, 16))
+	fmt.Println(piscine.ItoaBase(-42, 4))
+	fmt.Println(piscine.ItoaBase(123, 10))
+	fmt.Println(piscine.ItoaBase(0, 8))
+	fmt.Println(piscine.ItoaBase(255, 2))
+	fmt.Println(piscine.ItoaBase(-255, 16))
+	fmt.Println(piscine.ItoaBase(15, 16))
+	fmt.Println(piscine.ItoaBase(10, 4))
+	fmt.Println(piscine.ItoaBase(255, 10))
 }
