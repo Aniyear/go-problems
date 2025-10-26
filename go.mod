@@ -1,4 +1,4 @@
-module piscine
+module go-exam
 
 go 1.24.2
 

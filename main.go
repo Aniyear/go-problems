@@ -2,18 +2,14 @@ package main
 
 import (
 	"fmt"
-	"piscine/piscine"
+	"go-exam/piscine"
 )
 
 func main() {
-	fmt.Println(piscine.ItoaBase(10, 2))
-	fmt.Println(piscine.ItoaBase(255, 16))
-	fmt.Println(piscine.ItoaBase(-42, 4))
-	fmt.Println(piscine.ItoaBase(123, 10))
-	fmt.Println(piscine.ItoaBase(0, 8))
-	fmt.Println(piscine.ItoaBase(255, 2))
-	fmt.Println(piscine.ItoaBase(-255, 16))
-	fmt.Println(piscine.ItoaBase(15, 16))
-	fmt.Println(piscine.ItoaBase(10, 4))
-	fmt.Println(piscine.ItoaBase(255, 10))
+	fmt.Println(piscine.CamelToSnakeCase("HelloWorld"))
+	fmt.Println(piscine.CamelToSnakeCase("helloWorld"))
+	fmt.Println(piscine.CamelToSnakeCase("camelCase"))
+	fmt.Println(piscine.CamelToSnakeCase("CAMELtoSnackCASE"))
+	fmt.Println(piscine.CamelToSnakeCase("camelToSnakeCase"))
+	fmt.Println(piscine.CamelToSnakeCase("hey2"))
 }
