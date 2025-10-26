@@ -5,12 +5,6 @@ import (
 	"github.com/01-edu/z01"
 )
 
-func Print(s string){
-	for _, ch := range s{
-		z01.PrintRune(ch)
-	}
-}
-
 func buildBracketMap(code string) map[int]int {
 	stack := []int{}
 	pairs := make(map[int]int)
