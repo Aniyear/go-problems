@@ -1,51 +1,59 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 )
 
-func Atoi(s string) int {
-	if s == "" {
-		return 4000
-	}
-	n := 0
-	for _, ch := range s {
-		if ch < '0' || ch > '9' {
-			return 4000
-		}
-		n = n*10 + int(ch-'0')
-		if n > 4000 {
-			return 4000
+func toRoman(n int) string {
+	vals := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+	symb := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+
+	res := ""
+	for i := 0; i < len(vals); i++ {
+		for n >= vals[i] {
+			res += symb[i]
+			n -= vals[i]
 		}
 	}
-	return n
+	return res
 }
 
-func toRoman(arg string) string {
-	n := Atoi(arg)
-	if n <= 0 || n >= 4000 {
-		return "ERROR: cannot convert to roman digit"
+func expand(roman string) string {
+	val := map[byte]int{'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+
+	out := ""
+	for i := 0; i < len(roman); {
+		if i+1 < len(roman) && val[roman[i]] < val[roman[i+1]] {
+			// вычитание
+			out += fmt.Sprintf("(%c-%c)", roman[i+1], roman[i])
+			i += 2
+		} else {
+			// обычный символ
+			out += string(roman[i])
+			i++
+		}
+		if i < len(roman) {
+			out += "+"
+		}
 	}
-
-	thousands := []string{"", "M", "MM", "MMM"}
-	hundreds := []string{"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"}
-	tens := []string{"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"}
-	ones := []string{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}
-
-	r := thousands[(n/1000)%10] +
-		hundreds[(n/100)%10] +
-		tens[(n/10)%10] +
-		ones[n%10]
-
-	return r
+	return out
 }
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println()
+		fmt.Println("usage: <number>")
 		return
 	}
-	arg := os.Args[1]
-	fmt.Println(toRoman(arg))
+
+	var n int
+	fmt.Sscanf(os.Args[1], "%d", &n)
+	if n <= 0 || n >= 4000 {
+		fmt.Println("ERROR: cannot convert to roman digit")
+		return
+	}
+
+	r := toRoman(n)
+	fmt.Println(expand(r))
+	fmt.Println(r)
 }
